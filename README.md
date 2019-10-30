@@ -1,63 +1,68 @@
-# youtubeapi
-Youtube listing oppgave
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-OPPGAVEN:
+## Available Scripts
 
-Jeg liker ikke at nettsidene til Youtube tror de vet bedre enn meg hva jeg har lyst til å se på. Spesielt hvordan forslagslisten på høyresiden endrer seg når jeg klikker på et av forslagene for å spille det av.
+In the project directory, you can run:
 
-Jeg ønsker meg en veldig enkel interface:
+### `yarn start`
 
-1. Jeg ønsker å kunne legge inn en liste over de showene jeg ønsker å abonnere på, men i denne oppgaven kan listen hardkodes, se liste nedenfor.
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-2. Jeg ønsker å kunne klikke på den listen for å velge/velge bort (select/deselect) ett, ingen, eller flere av showene.
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
 
-3. Etter å ha valgt ett eller flere show skal det være mulig å trykke på en SØK-knapp for å få opp én (1) felles liste over tilgjengelige filmer i alle de valgte showene, sortert på dato/tid, med nyeste først. Begrens antallet filmer som vises i listen til 10.
+### `yarn test`
 
-4. I listen over filmer skal datoen og HELE tittelen være synlig.
+Launches the test runner in the interactive watch mode.<br />
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-5. Jeg ønsker å kunne klikke et sted på en linje i listen for å "gjemme" filmer. De skal da ikke lenger vises i listen.
+### `yarn build`
 
-6. De gjemte filmene skal ikke vises i listen selv om jeg gjør et nytt søk.
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-7. Jeg ønsker å kunne klikke på en linje og få den tilhørende filmen avspilt.
+The build is minified and the filenames include the hashes.<br />
+Your app is ready to be deployed!
 
-8. Med en gang jeg har klikket en linje for avspilling skal filmen gjemmes på samme måte som i forrige punkt.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-9. Koden skal skrives i enten ren React, React Redux eller React/MobX
+### `yarn eject`
 
-10. Koden skal leveres som et npm-prosjekt
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-MERK:
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-- Fokuser på funksjonaliteten og strukturering/lesbarhet av kode + kommentarer! Kommentarer skal være på engelsk.
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-- Dere trenger BARE å vise nye filmer i listen når jeg trykker SØK-knappen
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-- Dere trenger IKKE å bevare status på siden til neste gang siden lastes inn (i.e. no persistence/storage).
+## Learn More
 
-- Dere trenger IKKE å kunne vise listen over gjemte filmer
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-- Utseendet spiller "ingen" rolle så lenge det ikke har betydning for funksjonaliteten.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-- Dere trenger IKKE vise bilder/ikoner i noen av listene
+### Code Splitting
 
-- Koden trenger bare å være kompatibel med en av de siste versjonene av nettleserene Chrome, Firefox, Safari eller Opera
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-- Dere kan benytte "alle hjelpemidler", dvs ting hentet fra nettet, inkludert npm-pakker/moduler. Men send meg lenker til alle steder dere har kopiert kode av betydning fra.
+### Analyzing the Bundle Size
 
-- Kontakt meg dersom du har spørsmål om tolkning/avgrensning av oppgaven. Jeg gir *ikke* noen teknisk hjelp.
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-- Her er listen over show som skal være i listen (hardkodes):
+### Making a Progressive Web App
 
-https://www.youtube.com/channel/UCVTyTA7-g9nopHeHbeuvpRA (Late Night with Seth Myers)
-https://www.youtube.com/channel/UCwWhs_6x42TyRM4Wstoq8HA (The Daily Show with Trevor Noah)
-https://www.youtube.com/channel/UCMtFAi84ehTSYSE9XoHefig (The Late Show with Stephen Colbert)
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-Nok en avklaring: om det allerede spilles av en film, og det trykkes på en ny film, skal den nye filmen erstatte den gamle. Den gamle filmen skal fortsatt være merket som slettet.
+### Advanced Configuration
 
-Angående den hardkodede listen med show, så skal den hardkodes som en liste som "sendes rundt" i programmet for visning, det vil si ikke som statisk HTML.
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
+### Deployment
 
-Angående levering av besvarelsen, er det fint om dere kan gjøre det tilgjengelig på github og gi meg en link så jeg kan klone repositoryet.
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-Dere kan evt. bruke tar/zip til å sende meg repository + working directory.
+### `yarn build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
