@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const VideoDetail = ({ video }) => {
   if (!video) {
-    return <div>Loading ...</div>;
+    return <div>Click on an video to play...</div>;
   }
 
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
@@ -18,6 +19,10 @@ const VideoDetail = ({ video }) => {
       </div>
     </div>
   );
+};
+
+VideoDetail.propTypes = {
+  video: PropTypes.array
 };
 
 export default VideoDetail;
