@@ -1,7 +1,9 @@
 import React from "react";
+
 import youtubeapi from "./api/youtubeapi";
 import VideoList from "./components/VideoList";
 import VideoDetail from "./components/VideoDetail";
+import SearchList from "./components/SearchList";
 
 class App extends React.Component {
   state = {
@@ -19,34 +21,37 @@ class App extends React.Component {
     });
 
     if (response !== null) {
-      console.log("response: ", response.data.items);
       this.setState({
         videos: response.data.items
       });
     }
   };
 
-  handleVideoSelect = video => {
+  onHandleClick = video => {
     this.setState({ selectedVideo: video });
   };
 
   render() {
     return (
-      <div className="ui container" style={{ marginTop: "1em" }}>
-        <div className="ui grid">
-          <div className="row">
-            <button>Search</button>
-          </div>
-
+      <div className="ui container" style={{ margin: "3em" }}>
+        <SearchList onSearch={this.onSearch} />
+        <div className="ui segment grid">
           <div className="ui row">
-            <div className="eleven wide column" onClick={this.onSearch}>
-              <VideoDetail video={this.state.selectedVideo} />
-            </div>
-            <div className="five wide column">
+            <div
+              className="six wide column"
+              style={{ backgroundColor: "#fafafa" }}
+            >
               <VideoList
-                handleVideoSelect={this.handleVideoSelect}
+                handleVideoSelect={this.onHandleClick}
                 videos={this.state.videos}
               />
+            </div>
+
+            <div
+              className="ten wide column"
+              style={{ backgroundColor: "#f2f2f2" }}
+            >
+              <VideoDetail video={this.state.selectedVideo} />
             </div>
           </div>
         </div>
