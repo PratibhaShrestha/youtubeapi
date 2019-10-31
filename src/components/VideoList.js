@@ -1,8 +1,14 @@
 import React from "react";
 import VideoItem from "./VideoItem";
 import PropTypes from "prop-types";
+import { Transition, List } from "semantic-ui-react";
 
-const VideoList = ({ videos, handleVideoSelect, blacklistIds }) => {
+const VideoList = ({
+  videos,
+  handleVideoSelect,
+  blacklistIds,
+  onCloseClick
+}) => {
   if (videos === null || videos.length < 1) {
     return <div>No videos, click the search !</div>;
   }
@@ -25,18 +31,29 @@ const VideoList = ({ videos, handleVideoSelect, blacklistIds }) => {
           key={video.id.videoId}
           video={video}
           onHandleClick={handleVideoSelect}
+          onCloseClick={onCloseClick}
         />
       );
     });
   return (
-    <div className="ui celled divided list selection">{renderedVideos}</div>
+    <Transition.Group
+      as={List}
+      animation="drop"
+      duration={300}
+      divided
+      selection
+      verticalAlign="middle"
+    >
+      {renderedVideos}
+    </Transition.Group>
   );
 };
 
 VideoList.propTypes = {
   videos: PropTypes.array,
   blacklistIds: PropTypes.array,
-  handleVideoSelect: PropTypes.func
+  handleVideoSelect: PropTypes.func,
+  onCloseClick: PropTypes.func
 };
 
 export default VideoList;
