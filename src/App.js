@@ -4,6 +4,7 @@ import youtubeapi from "./api/youtubeapi";
 import VideoList from "./components/VideoList";
 import VideoDetail from "./components/VideoDetail";
 import SearchList from "./components/SearchList";
+import { STORAGE_BLACKLIST_IDS } from "./configs/constants";
 
 class App extends React.Component {
   state = {
@@ -13,8 +14,12 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    // CLEARING the localStorage for testing!
+    // localStorage.clear();
+
     this.setState({
-      blacklistIds: JSON.parse(localStorage.getItem("blacklistIds")) || []
+      blacklistIds:
+        JSON.parse(localStorage.getItem(STORAGE_BLACKLIST_IDS)) || []
     });
   }
 
@@ -22,6 +27,16 @@ class App extends React.Component {
     this.setState({ videos: [] }, () => {
       this._searchVideosForChannelId(channelIDs);
     });
+  };
+
+  onHandleClick = video => {
+    console.log("onHandleClidk here ", video);
+    this.setState(
+      prevState => ({ selectedVideo: video }),
+      () => {
+        this._setIdToBlacklist(video.id.videoId);
+      }
+    );
   };
 
   _searchVideosForChannelId = channelIDs => {
@@ -41,20 +56,26 @@ class App extends React.Component {
     });
   };
 
-  onHandleClick = video => {
-    this.setState(
-      prevState => ({
-        selectedVideo: video,
-        blacklistIds: [...prevState.blacklistIds, video.id.videoId]
-      }),
-      () => {
-        console.log(this.state.blacklistIds);
-        localStorage.setItem(
-          "blacklistIds",
-          JSON.stringify(this.state.blacklistIds)
-        );
-      }
-    );
+  _setIdToBlacklist = videoId => {
+    if (videoId && videoId !== null) {
+      this.setState(
+        prevState => ({
+          blacklistIds: [...prevState.blacklistIds, videoId]
+        }),
+        () => {
+          localStorage.setItem(
+            STORAGE_BLACKLIST_IDS,
+            JSON.stringify(this.state.blacklistIds)
+          );
+        }
+      );
+    } else {
+      console.error("videoId is null !");
+    }
+  };
+
+  onBlackListVideo = id => {
+    this._setIdToBlacklist(id);
   };
 
   render() {
@@ -68,8 +89,9 @@ class App extends React.Component {
               style={{ backgroundColor: "#fafafa", padding: "1.2em" }}
             >
               <VideoList
-                handleVideoSelect={this.onHandleClick}
                 videos={this.state.videos}
+                onCloseClick={this.onBlackListVideo}
+                handleVideoSelect={this.onHandleClick}
                 blacklistIds={this.state.blacklistIds}
               />
             </div>

@@ -1,0 +1,1 @@
+export const STORAGE_BLACKLIST_IDS = "BLACKLIST_IDS";
