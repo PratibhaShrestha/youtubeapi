@@ -46,7 +46,7 @@ class App extends React.Component {
           <div className="ui row">
             <div
               className="six wide column"
-              style={{ backgroundColor: "#fafafa" }}
+              style={{ backgroundColor: "#fafafa", padding: "1.2em" }}
             >
               <VideoList
                 handleVideoSelect={this.onHandleClick}
