@@ -1,29 +1,53 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { renderHTML, formatDate } from "../utils/helpers";
 
-const VideoItem = ({ video, onHandleClick }) => {
+import { Popup, Icon, Item, Label } from "semantic-ui-react";
+
+const VideoItem = ({ video, onHandleClick, onCloseClick }) => {
   return (
-    <div
-      onClick={() => onHandleClick(video)}
-      className="video-item item middle aligned"
+    <Item
       style={{
-        minHeight: 80,
         display: "flex",
         alignItems: "center"
       }}
     >
-      <div className="content">
-        <h5 className="ui header">{renderHTML(video.snippet.title)}</h5>
-        <div>{formatDate(video.snippet.publishedAt)}</div>
-        <div className="extra">
-          <div className="ui label">
-            <i aria-hidden="true" className="video icon"></i>
-            {video.snippet.channelTitle}
-          </div>
-        </div>
-      </div>
-    </div>
+      <Item.Content
+        style={{
+          minHeight: 100,
+          width: "100%"
+        }}
+        onClick={() => onHandleClick(video)}
+      >
+        <Item.Header>{renderHTML(video.snippet.title)}</Item.Header>
+        <Item.Meta>{formatDate(video.snippet.publishedAt)}</Item.Meta>
+        <Item.Extra>
+          <Label icon="video" content={video.snippet.channelTitle} />
+        </Item.Extra>
+      </Item.Content>
+
+      <Popup
+        content="Hide video from list"
+        trigger={
+          <Icon
+            floated="top"
+            size="large"
+            name="thumbs down outline"
+            onClick={() => {
+              onCloseClick(video.id.videoId);
+            }}
+          />
+        }
+      />
+    </Item>
   );
+};
+
+VideoItem.propTypes = {
+  video: PropTypes.object,
+  onHandleClick: PropTypes.func,
+  onCloseClick: PropTypes.func
 };
 
 export default VideoItem;
