@@ -8,8 +8,15 @@ import SearchList from "./components/SearchList";
 class App extends React.Component {
   state = {
     videos: [],
-    selectedVideo: null
+    selectedVideo: null,
+    blacklistIds: []
   };
+
+  componentDidMount() {
+    this.setState({
+      blacklistIds: JSON.parse(localStorage.getItem("blacklistIds")) || []
+    });
+  }
 
   onSearch = channelIDs => {
     this.setState({ videos: [] }, () => {
@@ -35,7 +42,19 @@ class App extends React.Component {
   };
 
   onHandleClick = video => {
-    this.setState({ selectedVideo: video });
+    this.setState(
+      prevState => ({
+        selectedVideo: video,
+        blacklistIds: [...prevState.blacklistIds, video.id.videoId]
+      }),
+      () => {
+        console.log(this.state.blacklistIds);
+        localStorage.setItem(
+          "blacklistIds",
+          JSON.stringify(this.state.blacklistIds)
+        );
+      }
+    );
   };
 
   render() {
@@ -51,6 +70,7 @@ class App extends React.Component {
               <VideoList
                 handleVideoSelect={this.onHandleClick}
                 videos={this.state.videos}
+                blacklistIds={this.state.blacklistIds}
               />
             </div>
 
