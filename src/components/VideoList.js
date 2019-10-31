@@ -6,7 +6,11 @@ const VideoList = ({ videos, handleVideoSelect }) => {
   if (videos === null || videos.length < 1) {
     return <div>no videos, click the search !</div>;
   }
-  const renderedVideos = videos.map(video => {
+  const sortAccToPublishedAt = (a, b) =>
+    new Date(b.snippet.publishedAt).getTime() -
+    new Date(a.snippet.publishedAt).getTime();
+
+  const renderedVideos = videos.sort(sortAccToPublishedAt).map(video => {
     return (
       <VideoItem
         key={video.id.videoId}
