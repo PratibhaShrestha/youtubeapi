@@ -1,10 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { renderHTML } from "../utils/helpers";
 import { Image } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
+import { renderHTML } from "../utils/helpers";
+
+// videoDetail component to play the video selected
 const VideoDetail = ({ video }) => {
   if (!video) {
+    // show an placeholder image if the video is not set !
     return (
       <div>
         <div>Click on a video from list to play...</div>
@@ -13,6 +16,7 @@ const VideoDetail = ({ video }) => {
     );
   }
 
+  // using the iFrame to show the Embeded video.. Can also use <Embed from semantic.ui
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
   return (
     <div>

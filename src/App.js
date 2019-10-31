@@ -20,6 +20,7 @@ class App extends React.Component {
 
   componentDidMount() {
     // CLEARING the localStorage for testing!
+    // IMP:: Comment out the 2 lines below ,if you want to clear localstorage.
     // Develop part START
     /*
     localStorage.clear();
@@ -27,22 +28,25 @@ class App extends React.Component {
     */
     // Develop part END
 
+    // Getting the hiddenIds from storage and setting it to STATE
     this.setState({
       hiddenIds: JSON.parse(localStorage.getItem(STORAGE_BLACKLIST_IDS)) || []
     });
   }
 
+  // onSearch from the SearchList
   onSearch = channelIDs => {
     this.setState({ videos: [], fetching: true }, () => {
       this._searchVideosForChannelId(channelIDs);
     });
   };
 
+  // onHandleClick of a video, should be selecting it to play, and also set it to blacklist
   onHandleClick = video => {
     this.setState(
       prevState => ({ selectedVideo: video }),
       () => {
-        this._setIdToBlacklist(video.id.videoId);
+        this._setIdToHiddenlist(video.id.videoId);
       }
     );
   };
@@ -63,6 +67,8 @@ class App extends React.Component {
       });
   };
 
+  // it will sarch video for a particular channelID ,,, and if the channelId is empty, it will just return
+  // Also it will check how many videos are in hiddenlist, and download extras to show in the list as compensation
   _searchVideosForChannelId = channelIDs => {
     if (channelIDs === null || channelIDs.length === 0) {
       this.setState({ fetching: false });
@@ -94,7 +100,8 @@ class App extends React.Component {
     });
   };
 
-  _setIdToBlacklist = videoId => {
+  // Sets an id of a video ( video.id.videoId) as either played or Hidden.
+  _setIdToHiddenlist = videoId => {
     if (videoId && videoId !== null) {
       this.setState(
         prevState => ({
@@ -116,10 +123,12 @@ class App extends React.Component {
     }
   };
 
+  // method to set id to HiddenIds..
   onBlackListVideo = id => {
-    this._setIdToBlacklist(id);
+    this._setIdToHiddenlist(id);
   };
 
+  // Renders, SectionList, DetailList and DetailView !
   render() {
     return (
       <div className="ui container" style={{ margin: "3em" }}>

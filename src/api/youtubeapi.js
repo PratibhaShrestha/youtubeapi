@@ -1,5 +1,12 @@
 import API from "./API";
 
+/**
+ * Getting the videos for the channelId using the youtube API
+ *
+ * @param {the channelId to fetch videos for} channelId
+ * @param {maxResults to fetch} maxResults
+ * return a promise with video.list or error !
+ */
 export const getVideosForChannel = (channelId, maxResults) =>
   new Promise(async (resolve, reject) => {
     await API.get("/search", {

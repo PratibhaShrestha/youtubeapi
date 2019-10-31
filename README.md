@@ -1,6 +1,15 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Important
+
+Create your own API key from https://console.developers.google.com/ with Youtube Data API v3 enables.
+Further process : https://elfsight.com/help/how-to-get-youtube-api-key/
+
+make a file name secrets.js in the root folder and add the following in it
+
+### export const API_KEY = "\<your-API-key>";
 
 ## Available Scripts
+
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 In the project directory, you can run:
 

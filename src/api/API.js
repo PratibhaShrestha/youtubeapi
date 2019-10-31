@@ -1,6 +1,10 @@
 import axios from "axios";
-const KEY = "AIzaSyDaVgC6dZudkAQ2uTRKml0rVNuF3eW-gYQ";
+import { API_KEY } from "../secrets";
 
+// secrets are stored in secrets.js
+const KEY = API_KEY;
+
+// maxResults for the params are sent from the methods
 export default axios.create({
   baseURL: "https://www.googleapis.com/youtube/v3/",
   params: {

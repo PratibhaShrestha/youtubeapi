@@ -1,12 +1,15 @@
 import React from "react";
+import { Popup, Icon, Item, Label } from "semantic-ui-react";
 import PropTypes from "prop-types";
 
 import { renderHTML, formatDate } from "../utils/helpers";
 
-import { Popup, Icon, Item, Label } from "semantic-ui-react";
-
+// video Item to show individual video title, publishedAt in the list.
+// Not showing the image, since it is not needed !
+// props are passed from the calling Component!
 const VideoItem = ({ video, onHandleClick, onCloseClick }) => {
   return (
+    //done inline styling , could have had it in separate style .js file
     <Item
       style={{
         display: "flex",
@@ -27,6 +30,7 @@ const VideoItem = ({ video, onHandleClick, onCloseClick }) => {
         </Item.Extra>
       </Item.Content>
 
+      {/* Popup to show hint on what the icon does */}
       <Popup
         content="Hide video from list"
         trigger={
