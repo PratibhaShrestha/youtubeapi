@@ -13,27 +13,11 @@ class SearchList extends React.Component {
     checkboxes: OPTIONS.reduce(
       (options, option) => ({
         ...options,
-        [option.name]: false
+        [option.name]: true
       }),
       {}
     )
   };
-
-  //To select/deselect all the checkboxes at one time
-  changeStateOfCheckboxes = isSelected => {
-    Object.keys(this.state.checkboxes).forEach(checkbox => {
-      this.setState(prevState => ({
-        checkboxes: {
-          ...prevState.checkboxes,
-          [checkbox]: isSelected
-        }
-      }));
-    });
-  };
-
-  selectAll = () => this.changeStateOfCheckboxes(true);
-
-  deselectAll = () => this.changeStateOfCheckboxes(false);
 
   handleCheckboxChange = (_, data) => {
     const { label } = data;
@@ -52,7 +36,7 @@ class SearchList extends React.Component {
       key={option.name}
       label={option.name}
       onChange={this.handleCheckboxChange}
-      checked={this.state.checkboxes[option]}
+      checked={this.state.checkboxes[option.name]}
     />
   );
   createCheckboxes = () => OPTIONS.map(this.createCheckbox);
