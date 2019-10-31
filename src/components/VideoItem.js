@@ -13,8 +13,7 @@ const VideoItem = ({ video, onHandleClick }) => {
       }}
     >
       <div className="content">
-        <div className="header">{renderHTML(video.snippet.title)}</div>
-
+        <h5 className="ui header">{renderHTML(video.snippet.title)}</h5>
         <div>{formatDate(video.snippet.publishedAt)}</div>
         <div className="extra">
           <div className="ui label">
