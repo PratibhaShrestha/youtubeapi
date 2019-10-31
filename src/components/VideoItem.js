@@ -1,5 +1,5 @@
 import React from "react";
-import { renderHTML } from "../utils/helpers";
+import { renderHTML, formatDate } from "../utils/helpers";
 
 const VideoItem = ({ video, onHandleClick }) => {
   return (
@@ -14,7 +14,14 @@ const VideoItem = ({ video, onHandleClick }) => {
     >
       <div className="content">
         <div className="header">{renderHTML(video.snippet.title)}</div>
-        <div>{video.snippet.publishedAt}</div>
+
+        <div>{formatDate(video.snippet.publishedAt)}</div>
+        <div className="extra">
+          <div className="ui label">
+            <i aria-hidden="true" className="video icon"></i>
+            {video.snippet.channelTitle}
+          </div>
+        </div>
       </div>
     </div>
   );
