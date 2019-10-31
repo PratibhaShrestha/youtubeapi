@@ -3,12 +3,7 @@ import VideoItem from "./VideoItem";
 import PropTypes from "prop-types";
 import { Transition, List } from "semantic-ui-react";
 
-const VideoList = ({
-  videos,
-  handleVideoSelect,
-  blacklistIds,
-  onCloseClick
-}) => {
+const VideoList = ({ videos, handleVideoSelect, hiddenIds, onCloseClick }) => {
   if (videos === null || videos.length < 1) {
     return <div>No videos, click the search !</div>;
   }
@@ -18,7 +13,7 @@ const VideoList = ({
     new Date(a.snippet.publishedAt).getTime();
 
   const blackListFilter = item => {
-    return !blacklistIds.some(id => id === item.id.videoId);
+    return !hiddenIds.some(id => id === item.id.videoId);
   };
 
   const renderedVideos = videos
@@ -51,7 +46,7 @@ const VideoList = ({
 
 VideoList.propTypes = {
   videos: PropTypes.array,
-  blacklistIds: PropTypes.array,
+  hiddenIds: PropTypes.array,
   handleVideoSelect: PropTypes.func,
   onCloseClick: PropTypes.func
 };
