@@ -11,20 +11,27 @@ class App extends React.Component {
     selectedVideo: null
   };
 
-  onSearch = async () => {
-    const searchTerm = "trevor";
+  onSearch = channelIDs => {
+    this.setState({ videos: [] }, () => {
+      this._searchVideosForChannelId(channelIDs);
+    });
+  };
 
-    const response = await youtubeapi.get("/search", {
-      params: {
-        q: searchTerm
+  _searchVideosForChannelId = channelIDs => {
+    channelIDs.forEach(async channelId => {
+      const response = await youtubeapi.get("/search", {
+        params: {
+          channelId: channelId,
+          order: "date"
+        }
+      });
+
+      if (response !== null) {
+        this.setState(prevState => ({
+          videos: [...prevState.videos, ...response.data.items]
+        }));
       }
     });
-
-    if (response !== null) {
-      this.setState({
-        videos: response.data.items
-      });
-    }
   };
 
   onHandleClick = video => {
@@ -49,7 +56,7 @@ class App extends React.Component {
 
             <div
               className="ten wide column"
-              style={{ backgroundColor: "#f2f2f2" }}
+              style={{ backgroundColor: "#f2f2f2", padding: "1.2em" }}
             >
               <VideoDetail video={this.state.selectedVideo} />
             </div>
