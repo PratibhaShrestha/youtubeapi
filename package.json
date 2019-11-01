@@ -1,23 +1,30 @@
 {
   "name": "youtube_suggestion",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.15",
+  "description": "library to show suggestions for a channel from youtube api v3",
+  "private": false,
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
     "react-toastify": "^5.4.0",
-    "semantic-ui-react": "^0.88.1"
+    "semantic-ui-react": "^0.88.1",
+    "webpack": "^4.41.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "rm -rf dist && mkdir dist &&  babel src -d dist --copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "author": {
+    "name": "Pratibha Shrestha",
+    "email": "pateebha@gmail.com"
   },
   "browserslist": {
     "production": [
@@ -30,5 +37,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-es2016": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.1",
+    "babel-minify-webpack-plugin": "^0.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "webpack-cli": "^3.3.10"
   }
 }
