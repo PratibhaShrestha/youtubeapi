@@ -1,12 +1,12 @@
-.App {
+.YoutubeSuggestion {
   text-align: center;
 }
 
-.App-logo {
+.YoutubeSuggestion-logo {
   height: 40vmin;
 }
 
-.App-header {
+.YoutubeSuggestion-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -17,6 +17,6 @@
   color: white;
 }
 
-.App-link {
+.YoutubeSuggestion-link {
   color: #09d3ac;
 }

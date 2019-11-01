@@ -11,15 +11,18 @@ const OPTIONS = [
 
 class SearchList extends React.Component {
   // creates an object named checkboxes in state with name and value ( by default is true)
-  state = {
-    checkboxes: OPTIONS.reduce(
-      (options, option) => ({
-        ...options,
-        [option.name]: true
-      }),
-      {}
-    )
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      checkboxes: OPTIONS.reduce(
+        (options, option) => ({
+          ...options,
+          [option.name]: true
+        }),
+        {}
+      )
+    };
+  }
 
   // onChange , first params is Event and second is the data info about the checkbox
   handleCheckboxChange = (_, data) => {

@@ -10,13 +10,16 @@ import VideoList from "./components/VideoList";
 import VideoDetail from "./components/VideoDetail";
 import SearchList from "./components/SearchList";
 
-class App extends React.Component {
-  state = {
-    videos: [],
-    selectedVideo: null,
-    hiddenIds: [],
-    fetching: null
-  };
+class YoutubeSuggestion extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      videos: [],
+      selectedVideo: null,
+      hiddenIds: [],
+      fetching: null
+    };
+  }
 
   componentDidMount() {
     // CLEARING the localStorage for testing!
@@ -167,4 +170,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default YoutubeSuggestion;
