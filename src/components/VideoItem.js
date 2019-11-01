@@ -24,7 +24,9 @@ const VideoItem = ({ video, onHandleClick, onCloseClick }) => {
         onClick={() => onHandleClick(video)}
       >
         <Item.Header>{renderHTML(video.snippet.title)}</Item.Header>
-        <Item.Meta>{formatDate(video.snippet.publishedAt)}</Item.Meta>
+        <Item.Meta style={{ marginTop: 6, marginBottom: 6 }}>
+          {formatDate(video.snippet.publishedAt)}
+        </Item.Meta>
         <Item.Extra>
           <Label icon="video" content={video.snippet.channelTitle} />
         </Item.Extra>
