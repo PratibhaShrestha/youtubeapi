@@ -8,8 +8,8 @@ import API from "./API";
  * return a promise with video.list or error !
  */
 export const getVideosForChannel = (channelId, maxResults) =>
-  new Promise(async (resolve, reject) => {
-    await API.get("/search", {
+  new Promise((resolve, reject) => {
+    API.get("/search", {
       params: {
         channelId: channelId,
         order: "date",
